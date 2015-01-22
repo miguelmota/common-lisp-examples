@@ -101,3 +101,9 @@ tmp
 #######################
 .VimballRecord
 .netrwhist
+
+# Lisp files
+#######################
+
+*.fas
+*.lib
