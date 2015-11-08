@@ -200,3 +200,46 @@ APROPOS - lists names of all symbols containing a specified string. Second argum
 (apropos "TOTAL" "USER")
 ARRAY-TOTAL-SIZE                           function
 ARRAY-TOTAL-SIZE-LIMIT                     constant
+
+# Chapter 6
+
+(cons `w `(x y z)) ; written as (W. (X Y Z)
+
+APPEND - append list to list
+(append `(friends romans) `(and countrymen))
+append does not modify, it's a nondestructive function
+
+CONS: creates one new cons cell. It is often used to add an element to the front of the list.
+LIST: makes new lists by accepting an arbitriary number of inputs and building a chain of cons cell ending in NIL. The car of each cell points to the corresponding input.
+APPEND: appends lists together by copying the first input an making the cdr of the last cell of the copy point to the second input. It is an error for the first input to APPEND to be non-list.
+
+REVERSE: reversal of list, nondestructive
+NTHCDR: nth successive cdr of a list
+(nthcdr 1 `(a b c)) ; (B C)
+LAST: last item of list
+REMOVE: remote item from list, nondestructive
+
+MEMBER: predicate checks whether an item is a member of a list. If found list is returned
+(setf ducks `(huey dewey louie)) ; create set
+(member `huey ducks) ; is huey a duck? (HUEY DEWEY LOUIE)
+`)
+
+INTERSECTION: takes the intersection of two sets and returns a list of items appearing in both sets.
+(intersection `(fred john mary) `(sue mary fred)) ; (FRED MARY)
+
+UNION: returns a list of item that appear in either set.
+(union `(fred john mary) `(sue mary fred)) ; (FRED MARY JOHN SUE)
+
+SET-DIFFERENCE: returns what is left of the first set when the elements in the second set have been removed.
+(set-difference `(alpha bravo charlie delta) `(bravo charlie)) ; (ALPHA DELTA)
+
+SUBSETP: return T if first set is contained in the second set. Proper Subset: not equal, but subset
+(subsetp `(a i) `(a e i o u)) ; t
+
+associated list: (a-list for short) is a list of lists (a table).
+each list is an `entry`, and the car of each entry is a `key`
+
+ASSOC: looks up an entry in a table, given its key.
+returns entire list, nil if not found
+
+RASSOC: like ASSOC, except it looks at the cdr instead of car for key. (Reverse ASSOC)
